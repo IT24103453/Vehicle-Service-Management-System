@@ -13,6 +13,8 @@ if (string.IsNullOrWhiteSpace(connectionString))
 
 builder.Services.AddDbContext<NotificationDbContext>(options => options.UseMySQL(connectionString));
 builder.Services.AddScoped<INotificationService, NotificationManager>();
+builder.Services.AddScoped<IKafkaNotificationProcessor, KafkaNotificationProcessor>();
+builder.Services.AddHostedService<KafkaNotificationConsumer>();
 
 var jwtKey = builder.Configuration["Jwt:Key"];
 if (string.IsNullOrWhiteSpace(jwtKey))
