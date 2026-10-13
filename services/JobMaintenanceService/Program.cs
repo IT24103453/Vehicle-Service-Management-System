@@ -21,6 +21,8 @@ builder.Services.AddScoped<IRepairTaskService, RepairTaskService>();
 builder.Services.AddScoped<IRepairNoteService, RepairNoteService>();
 builder.Services.AddScoped<IJobStatusService, JobStatusService>();
 builder.Services.AddScoped<IServiceHistoryService, ServiceHistoryService>();
+builder.Services.AddScoped<IServiceHistoryQueryService, ServiceHistoryQueryService>();
+builder.Services.AddScoped<IVehicleOwnershipValidator, VehicleOwnershipValidator>();
 builder.Services.AddScoped<IActiveJobsReportService, ActiveJobsReportService>();
 builder.Services.AddScoped<IInspectionService, InspectionService>();
 builder.Services.AddScoped<IPartRequestService, PartRequestService>();
