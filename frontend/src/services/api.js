@@ -587,6 +587,12 @@ export const jobStatusApi = {
   },
 }
 
+export const serviceHistoryApi = {
+  getByVehicle(vehicleId) {
+    return jobMaintenanceRequest(`/api/service-history/vehicles/${vehicleId}`)
+  },
+}
+
 
 /* =========================================================
    ACTIVE JOBS REPORT API

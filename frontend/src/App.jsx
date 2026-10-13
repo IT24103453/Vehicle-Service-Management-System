@@ -41,6 +41,7 @@ import InventoryDashboardPage from './pages/InventoryDashboardPage'
 import BillingChargesPage from './pages/BillingChargesPage'
 import InvoicesPage from './pages/InvoicesPage'
 import MyInvoicesPage from './pages/MyInvoicesPage'
+import ServiceHistoryPage from './pages/ServiceHistoryPage'
 
 import NotificationCenterPage from './pages/NotificationCenterPage'
 import InvoicePaymentReportPage from './pages/InvoicePaymentReportPage'
@@ -287,6 +288,15 @@ function App() {
         element={
           <ProtectedRoute>
             <EditVehiclePage />
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/vehicles/:vehicleId/history"
+        element={
+          <ProtectedRoute roles={['Customer', 'ServiceAdvisor', 'Administrator']}>
+            <ServiceHistoryPage />
           </ProtectedRoute>
         }
       />
