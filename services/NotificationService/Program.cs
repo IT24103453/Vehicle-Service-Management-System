@@ -44,7 +44,7 @@ builder.Services.AddOpenApi();
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowReactFrontend", policy => policy
-        .WithOrigins("http://localhost:5173", "http://144.24.106.68:8080", "https://zealous-sand-061bb6b00.6.azurestaticapps.net")
+        .WithOrigins("http://localhost:5173", "http://144.24.106.68:8080", "https://zealous-sand-061bb6b00.6.azurestaticapps.net", "https://jolly-wave-0155a3200.6.azurestaticapps.net")
         .AllowAnyHeader()
         .AllowAnyMethod());
 });
