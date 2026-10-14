@@ -3,7 +3,9 @@ name: Build and Deploy .NET Microservices to Azure
 
 on:
   push:
-    branches: [ "production"] 
+    branches:
+      - production
+  workflow_dispatch: 
 
 jobs:
   build-and-deploy:
