@@ -27,6 +27,6 @@ export default function NotificationBell() {
 
   return <button className="notification-bell" onClick={() => navigate('/notifications')} aria-label={count ? `${count} unread notifications` : 'Notifications'} title="Notifications">
     <Bell size={19} />
-    {count > 0 && <span className="notification-badge">{count > 99 ? '99+' : count}</span>}
+    {count > 0 && <span className="notification-badge" aria-live="polite" aria-atomic="true">{count > 99 ? '99+' : count}</span>}
   </button>
 }

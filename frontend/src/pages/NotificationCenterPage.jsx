@@ -71,7 +71,7 @@ export default function NotificationCenterPage() {
   }
 
   return <div className="portal-layout"><PortalSidebar /><main className="portal-main">
-    <PageHeader eyebrow="ACCOUNT ACTIVITY" title="NOTIFICATIONS" description="Stay updated with activity related to your account and service." actions={<button className="portal-secondary-button" onClick={load}>Refresh</button>} />
+    <PageHeader eyebrow="ACCOUNT ACTIVITY" title="Notifications" description="Stay updated with activity related to your account and service." actions={<button className="portal-secondary-button" onClick={load}>Refresh</button>} />
     <div className="portal-content notification-center-content">
       {error && <div className="portal-error">{error}</div>}
       <section className="notification-summary portal-card">
