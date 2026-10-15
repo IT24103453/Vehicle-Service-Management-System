@@ -3,8 +3,16 @@ import {
   Route,
   Routes,
 } from 'react-router-dom'
+import { MotionConfig } from 'motion/react'
 
 import './App.css'
+import './styles/premium.css'
+import './styles/premium-components.css'
+import './styles/premium-states.css'
+import './styles/regression-fixes.css'
+import './styles/phase-two.css'
+import './styles/register-experience.css'
+import './styles/brand-logo.css'
 
 import ProtectedRoute from './components/ProtectedRoute'
 import { getRole, isAuthenticated } from './services/api'
@@ -77,7 +85,10 @@ function HomeRedirect() {
 
 function App() {
   return (
-    <Routes>
+    <MotionConfig reducedMotion="user">
+      <a className="skip-link" href="#main-content">Skip to main content</a>
+      <div id="main-content" className="route-stage">
+        <Routes>
       <Route
         path="/"
         element={<HomeRedirect />}
@@ -336,7 +347,9 @@ function App() {
           </ProtectedRoute>
         }
       />
-    </Routes>
+        </Routes>
+      </div>
+    </MotionConfig>
   )
 }
 
