@@ -8,7 +8,7 @@ function PageHeader({ eyebrow, title, description, actions }) {
         <h1>{title}</h1>
         {description && <p className="portal-page-description">{description}</p>}
       </div>
-      <div className="page-header-actions">
+      <div className="page-header-actions" aria-label="Page actions">
         {actions}
         <NotificationBell />
       </div>
