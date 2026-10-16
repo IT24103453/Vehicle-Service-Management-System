@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { motion, useReducedMotion } from 'motion/react'
 import { ArrowRight, Eye, EyeOff, Lock, Mail, Phone } from 'lucide-react'
 import { authApi, saveAuth } from '../../services/api'
+import { getRoleHomeRoute } from '../../auth/roles'
 
 const heroVariants = {
   hidden: {},
@@ -35,11 +36,9 @@ export default function LoginExperience() {
     try {
       const response = await authApi.login(form.email, form.password)
       saveAuth(response)
-      const role = response.role || localStorage.getItem('role') || ''
-      if (role === 'Administrator') navigate('/admin')
-      else if (role === 'ServiceAdvisor' || role === 'Staff') navigate('/service-advisor')
-      else if (role === 'Mechanic') navigate('/mechanic')
-      else navigate('/profile')
+      const destination = getRoleHomeRoute(response.role)
+      if (!destination) throw new Error('The account has an unsupported role. Contact an administrator.')
+      navigate(destination, { replace: true })
     } catch (requestError) {
       setError(requestError.message)
     } finally {

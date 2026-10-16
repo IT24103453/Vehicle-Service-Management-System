@@ -1,3 +1,5 @@
+import { normalizeRole } from '../auth/roles'
+
 const CUSTOMER_BOOKING_API =
   import.meta.env.VITE_API_BASE_URL ||
   'https://vcs-customerbooking-service-gbcpfsfecdcqayda.eastasia-01.azurewebsites.net'
@@ -55,22 +57,13 @@ export function getToken() {
 
 
 export function saveAuth(authResponse) {
+  const role = normalizeRole(authResponse.role)
+  if (!role) throw new Error('The account has an unsupported role. Contact an administrator.')
+
   localStorage.setItem('token', authResponse.token)
-
-  localStorage.setItem(
-    'userId',
-    authResponse.userId,
-  )
-
-  localStorage.setItem(
-    'email',
-    authResponse.email,
-  )
-
-  localStorage.setItem(
-    'role',
-    authResponse.role,
-  )
+  localStorage.setItem('userId', authResponse.userId)
+  localStorage.setItem('email', authResponse.email)
+  localStorage.setItem('role', role)
 }
 
 
@@ -87,7 +80,7 @@ export function isAuthenticated() {
 }
 
 export function getRole() {
-  return localStorage.getItem('role') || ''
+  return normalizeRole(localStorage.getItem('role'))
 }
 
 export function getUserEmail() {
